@@ -89,6 +89,27 @@ Following fields are supported:
 - `URL` - URL of Clubhouse story, also appended to the description
 - `Created at` - Preserves the story creation date
 
+### ClickUp CSV
+
+ClickUp workspaces can be imported into a Linear team from the CSV export file. It only imports `tasks`. The ClickUp CSV is available at Settings > Import/Export.
+
+CSV docs are here: https://docs.clickup.com/en/articles/1761647-workspace-task-data-export-csv
+
+Following fields are supported:
+
+- `Task Name` - Issue title
+- `Task Content` - Issue Description
+- `Status` - ClickUp defaults `Open`, `In Progress`, `Review` and `Closed` are mapped to Linear statuses. Anything else is thrown into `Todo`
+- `Tags` - Added as labels
+- `Asignees` - Issue asignee (only the first is preserved)
+- `URL` - URL of Clickup story is appended to the description
+- `Date Created` - Preserves the story creation date
+- `Priority` - Issue priority
+- `List Name` - Added as a label
+- `Folder Name` - Added as a label
+- `Comments` - Appended to the description
+- `Attachments` - URLs are appended to the description
+
 ### Trello JSON
 
 Trello board can be imported into a Linear team from the JSON export file, which can be obtained by going into Board → Show Menu → More → Print and Export → Export as JSON.
@@ -114,6 +135,7 @@ Following fields are supported:
 - `Status` - Issue state (workflow)
 - `Assignee` - Issue assignee
 - `Labels` - Added as a label
+
 ## Todo
 
 - [x] Automatic image uploads
@@ -121,9 +143,11 @@ Following fields are supported:
 - [ ] Created at (requires API change)
 
 <!-- AUTO-GENERATED-CONTENT:START (TEXT_SECTION:id=license&src=../../README.md) -->
+
 ## License
 
 <br/>
 
 Licensed under the [MIT License](./LICENSE).
+
 <!-- AUTO-GENERATED-CONTENT:END -->
