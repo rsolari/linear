@@ -3,6 +3,7 @@
 import chalk from "chalk";
 import * as inquirer from "inquirer";
 import { asanaCsvImport } from "./importers/asanaCsv";
+import { clickupCsvImport } from "./importers/clickupCsv";
 import { clubhouseCsvImport } from "./importers/clubhouseCsv";
 import { githubImport } from "./importers/github";
 import { jiraCsvImport } from "./importers/jiraCsv";
@@ -48,6 +49,10 @@ inquirer.registerPrompt("filePath", require("inquirer-file-path"));
             value: "clubhouseCsv",
           },
           {
+            name: "Clickup (CSV export)",
+            value: "clickupCsv",
+          },
+          {
             name: "Trello (JSON export)",
             value: "trelloJson",
           },
@@ -76,6 +81,9 @@ inquirer.registerPrompt("filePath", require("inquirer-file-path"));
         break;
       case "clubhouseCsv":
         importer = await clubhouseCsvImport();
+        break;
+      case "clickupCsv":
+        importer = await clickupCsvImport();
         break;
       case "trelloJson":
         importer = await trelloJsonImport();
