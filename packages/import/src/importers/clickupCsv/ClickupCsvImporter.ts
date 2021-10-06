@@ -80,7 +80,7 @@ export class ClickupCsvImporter implements Importer {
       if (row["Folder Name"] !== "hidden") {
         tags.push(row["Folder Name"]);
       }
-      const labels = tags.filter(tag => !!tag);
+      const labels = new Set<string>(tags.filter(tag => !!tag).map(tag => tag.toLowerCase()));
 
       // build description
       const description = row["Task Content"] !== "null" ? row["Task Content"] : "";
@@ -106,7 +106,7 @@ export class ClickupCsvImporter implements Importer {
         status: mapStatus(row.Status),
         assigneeId: row.Assignees[0],
         startedAt: !!row["Start Date"] ? new Date(row["Start Date"]) : undefined,
-        labels,
+        labels: Array.from(labels),
       });
 
       for (const lab of labels) {
