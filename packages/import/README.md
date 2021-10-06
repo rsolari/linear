@@ -93,7 +93,7 @@ Following fields are supported:
 
 ClickUp workspaces can be imported into a Linear team from the CSV export file. It only imports `tasks`. The ClickUp CSV is available at Settings > Import/Export.
 
-CSV docs are here: https://docs.clickup.com/en/articles/1761647-workspace-task-data-export-csv
+Note that the CSV includes archived tasks by default. They will be imported. CSV docs are here: https://docs.clickup.com/en/articles/1761647-workspace-task-data-export-csv
 
 Following fields are supported:
 
