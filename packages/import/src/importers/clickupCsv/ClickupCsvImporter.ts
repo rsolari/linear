@@ -74,12 +74,19 @@ export class ClickupCsvImporter implements Importer {
     for (const row of data) {
       // add labels
       const tags = row.Tags.slice(1, -1).split(",");
+      tags.push(row["Space Name"]);
       if (row["List Name"]) {
         tags.push(row["List Name"]);
       }
       if (row["Folder Name"] !== "hidden") {
         tags.push(row["Folder Name"]);
       }
+      const rowAssignees = row.Assignees.slice(1, -1).split(",");
+
+      if (rowAssignees[0]) {
+        tags.push(`assignee:${rowAssignees[0]}`);
+      }
+
       const labels = new Set<string>(tags.filter(tag => !!tag).map(tag => tag.toLowerCase()));
 
       // build description
@@ -97,7 +104,9 @@ export class ClickupCsvImporter implements Importer {
           return `${attachment.title} attached: ${attachment.url}`;
         })
         .join("\n");
-      const descriptionText = `${description}\n\nImported from Clickup: https://app.clickup.com/t/${row["Task ID"]}\n\n${commentsText}\n\n${attachmentsText}`;
+
+      const unescapedDescription = description.replace(/\\n/g, "\n");
+      const descriptionText = `${unescapedDescription}\n\nImported from Clickup: https://app.clickup.com/t/${row["Task ID"]}\n\n${commentsText}\n\n${attachmentsText}`;
 
       importData.issues.push({
         title: row["Task Name"],

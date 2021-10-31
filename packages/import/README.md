@@ -101,10 +101,11 @@ Following fields are supported:
 - `Task Content` - Issue Description
 - `Status` - ClickUp defaults `Open`, `In Progress`, `Review` and `Closed` are mapped to Linear statuses. Anything else is thrown into `Todo`
 - `Tags` - Added as labels
-- `Asignees` - Issue asignee (only the first is preserved)
+- `Asignees` - Added as a label (only the first is preserved)
 - `URL` - URL of Clickup story is appended to the description
 - `Date Created` - Preserves the story creation date
 - `Priority` - Issue priority
+- `Space` - Added as a label
 - `List Name` - Added as a label
 - `Folder Name` - Added as a label
 - `Comments` - Appended to the description
